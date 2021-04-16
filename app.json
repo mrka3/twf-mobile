@@ -1,0 +1,12 @@
+{
+  "name": "twf-mobile",
+  "displayName": "twf-mobile",
+  "expo": {
+    "name": "twf-mobile",
+    "slug": "twf-mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
