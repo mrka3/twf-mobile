@@ -1,72 +1,18 @@
 import * as React from 'react';
-import { Text, View, Image, StyleSheet} from 'react-native';
+import { View, } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import TwfNavigationBar from './components/TwfNavigationBar';
+import TopBar from './components/TopBar';
 
-const styles = StyleSheet.create({
-  userImage: {
-    borderRadius: 60,
-    height: 120,
-    marginBottom: 10,
-    width: 120,
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={{flex: 1}}>
+        <TopBar></TopBar>
+        <NavigationContainer>
+        <TwfNavigationBar></TwfNavigationBar>
+     </NavigationContainer>
+     </View>
+    );
   }
-})
-
-
-function GroupScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <View>
-        <Image 
-        style={styles.userImage}
-        source={{uri:"https://sun9-6.userapi.com/impf/c854024/v854024784/12e190/KBJugplXF_Q.jpg?size=960x1280&quality=96&sign=0685c518494777363e9a11f0f580321a&type=album"}} 
-        />
-      </View>
-      <Text>ДАУН БРЕЙКЕР</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'Groups') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle';
-            } else if (route.name === 'Profile') {
-              iconName = focused ? 'person' : 'person';
-            }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
-        }}
-      >
-        <Tab.Screen name="Groups" component={GroupScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
 }
